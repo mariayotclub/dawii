@@ -1,32 +1,47 @@
-<%-include('../cabecalho.ejs')%>
-    <h1>Eventos Marcados</h1>
-    <div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome">
-         <button type="submit">Pesquisar</button>
-    </form>
+<%- include('../cabecalho.ejs') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1><i class="fa fa-calendar-alt"></i> Eventos Marcados</h1>
+    <a href="/evento/add" class="btn btn-success"><i class="fa fa-plus"></i> Novo Evento</a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="/evento/lst" method="post" class="row g-2">
+            <div class="col-auto flex-grow-1">
+                <input type="text" name="filtro" class="form-control" placeholder="Pesquisar por nome do evento...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>
+            </div>
+        </form>
     </div>
-    <a href="/evento/add" class="btn" >Adicionar Evento</a>
-    <table>
-        <tr>
-            <td>Evento</td>
-            <td>Tipo</td>
-            <td>Data</td>
-            <td>Ações</td>
-        
-        </tr>
-      
-        <%for (const {id, nomeEvento, tipo, data} of Eventos) {%>
-        <tr>
-            <td><%=nomeEvento%></td>
-            <td><%=tipo%></td>
-             <td><%=data%></td>
-            
-            <td><a href="/evento/edt/<%=id%>" class="btn" >Editar</a>
-            <a href="/evento/del/<%=id%>" class="btn" >Excluir</a></td>
-        </tr>
-        <%}%>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Evento</th>
+                <th>Tipo</th>
+                <th>Data</th>
+                <th class="text-center" style="width: 150px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const {id, nomeEvento, tipo, data} of Eventos) { %>
+            <tr>
+                <td><%= nomeEvento %></td>
+                <td><span class="badge bg-info text-dark"><%= tipo %></span></td>
+                <td><%= new Date(data).toLocaleDateString('pt-BR') %></td>
+                <td class="text-center">
+                    <a href="/evento/edt/<%= id %>" class="btn btn-sm btn-warning" title="Editar"><i class="fa fa-edit"></i></a>
+                    <a href="/evento/del/<%= id %>" class="btn btn-sm btn-danger" title="Excluir" onclick="return confirm('Tem certeza?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
     </table>
- <%-include('../rodape.ejs')%>
+</div>
+
+<%- include('../rodape.ejs') %>

@@ -1,39 +1,36 @@
 <%- include('../cabecalho.ejs') %>
 
+<div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Adicionar Exposição</h1>
+    <a href="/exposicao/lst" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Voltar</a>
+</div>
 
-    <div>
-        <a href="/exposicao/lst" class="btn">Listar</a>
+<form method="post">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Nome da Coleção/Exposição:</label>
+            <input type="text" name="nomeColecao" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Tema:</label>
+            <input type="text" name="tema" class="form-control" required>
+        </div>
+
+        <div class="col-md-12">
+            <label class="form-label">Artista Principal:</label>
+            <select name="artista" class="form-select" required>
+                <option value="">Selecione...</option>
+                <% Artistas.forEach(function(artista){ %>
+                    <option value="<%= artista.id %>"><%= artista.nome %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Cadastrar</button>
+        </div>
     </div>
+</form>
 
-    <div>
-        <form method="post">
-
-            <div class="form-group">
-                <label>Nome Coleção:</label>
-                <input type="text" name="nomeColecao"><br>
-            </div>
-
-            <div class="form-group">
-                <label>Artista:</label>
-                <select name="artista" id="">
-                    <option value="">selecione</option>
-                    <%Artistas.forEach(function(artista){%>
-                        <option value='<%=artista.id%>'>
-                            <%=artista.nome%>
-                        </option>
-                        <%})%>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Tema:</label>
-                <input type="text" name="tema"><br>
-            </div>
-
-            <button type="submit">Cadastrar</button>
-
-        </form>
-    </div>
-
-    <%- include('../rodape.ejs') %>
+<%- include('../rodape.ejs') %>

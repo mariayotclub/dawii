@@ -12,7 +12,10 @@ export default class ExposicaoController{
             res.render(caminhoBase + "add", {Artistas: artistas})
         }
         this.add = async(req, res)=>{
-           
+            var jartista = null;
+            if(req.body.time != null) {
+                jartista = await Artista.findById(req.body.artista)
+            }
             await Exposicao.create({
                 artista: req.body.artista,
                 tema: req.body.tema,
@@ -21,7 +24,7 @@ export default class ExposicaoController{
             res.redirect('/'+caminhoBase + 'add');
         }
         this.list = async(req, res)=>{
-            const resultado = await Exposicao.find({})
+            const resultado = await Exposicao.find({}).populate('artista');
             res.render(caminhoBase + 'lst', {Exposicoes:resultado})
         }
         this.find = async(req, res)=>{

@@ -1,129 +1,132 @@
-/* Estilos Gerais */
+/* Definição das Variáveis da Nova Paleta Vintage */
+:root {
+    --color-dark: #3e3742;       /* Cinza Escuro (Texto, Botões Fortes) */
+    --color-primary: #825e65;    /* Vinho Rosado (Navbar, Destaques) */
+    --color-accent: #cc8383;     /* Vermelho Suave (Excluir, Eventos) */
+    --color-light-accent: #ebc4a9; /* Pêssego (Editar, Detalhes) */
+    --color-bg: #e6e0c5;         /* Bege Claro (Fundo) */
+    --color-white: #ffffff;      /* Branco (Cartões) */
+}
+
+/* Reset e Corpo da Página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #b5b4f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg); /* Fundo Bege */
+    color: var(--color-dark);
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .footer{
-    padding: 20px;
-  }
-  
-  .container {
-    background-color: #f3f4ff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 100%;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #3b79ff;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilos do Menu de Navegação */
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: line;
-    gap: 10px;
-  }
-  
-  .menu ul li {
-    text-align: center;
-  }
-  
-  /* Estilos do Formulário */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Estilos dos Botões */
-  .btn {
-    display: inline-block;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .btn {
-    background-color: #4f4df5;
+}
+
+/* Container Principal */
+.container.bg-white {
+    background-color: var(--color-white) !important;
+    border-radius: 8px; /* Bordas um pouco menos arredondadas para o estilo vintage */
+    box-shadow: 0 4px 15px rgba(62, 55, 66, 0.1); /* Sombra suave usando a cor escura */
+    border: 1px solid rgba(130, 94, 101, 0.2); /* Borda sutil */
+}
+
+/* Navbar Personalizada */
+.navbar-custom {
+    background-color: var(--color-primary) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #f0f0f0 !important; /* Branco levemente off-white */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--color-light-accent) !important; /* Pêssego ao passar o mouse */
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark); /* Cinza Escuro */
+    font-family: 'Georgia', serif; /* Fonte serifada para toque clássico/vintage */
+    font-weight: bold;
+}
+
+/* --- Botões Personalizados com a Paleta --- */
+
+/* Botão Primário (Pesquisar/Ação Principal) -> Vinho Rosado */
+.btn-primary {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
     color: #fff;
-  }
-  
-  .btn.edit {
-    background-color: #ffc107;
-    color: #000;
-  }
-  
-  .btn.add {
+}
+
+.btn-primary:hover {
+    background-color: #6d4a50 !important; /* Versão mais escura do vinho */
+    border-color: #6d4a50 !important;
+}
+
+/* Botão Sucesso (Adicionar/Cadastrar) -> Cinza Escuro (Sóbrio e Forte) */
+.btn-success {
+    background-color: var(--color-dark) !important;
+    border-color: var(--color-dark) !important;
     color: #fff;
-    background-color:#1c0df3
-  }
-  
-  .btn.delete {
-    background-color: #fa3d50;
+}
+
+.btn-success:hover {
+    background-color: #2a252d !important;
+    border-color: #2a252d !important;
+}
+
+/* Botão Aviso (Editar/Voltar) -> Pêssego */
+.btn-warning, .btn-secondary {
+    background-color: var(--color-light-accent) !important;
+    border-color: var(--color-light-accent) !important;
+    color: var(--color-dark) !important; /* Texto escuro para contraste */
+    font-weight: bold;
+}
+
+.btn-warning:hover, .btn-secondary:hover {
+    background-color: #dcb396 !important;
+    border-color: #dcb396 !important;
+}
+
+/* Botão Perigo (Excluir) -> Vermelho Suave */
+.btn-danger {
+    background-color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
     color: #fff;
-  }
-  
-  .btn.cancelar {
-    background-color: #6c757d;
+}
+
+.btn-danger:hover {
+    background-color: #b57070 !important;
+    border-color: #b57070 !important;
+}
+
+/* Botões Outline na Home (Bordas coloridas) */
+.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
     color: #fff;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
-  /* Estilos da Tabela */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #d8cdff;
-  }
-  
-  table th {
-    background-color: #f8f9fa;
-  }
-  
-  table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .search
-  {
-    text-align: right;
-  }
+}
+
+.btn-outline-success {
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+.btn-outline-success:hover {
+    background-color: var(--color-dark);
+    color: #fff;
+}
+
+/* Tabelas */
+.table-dark {
+    background-color: var(--color-dark) !important; /* Cabeçalho cinza escuro */
+    color: var(--color-light-accent); /* Texto pêssego no cabeçalho */
+}
+
+/* Rodapé */
+footer {
+    color: var(--color-primary);
+    font-weight: 500;
+}

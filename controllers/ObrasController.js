@@ -28,7 +28,7 @@ export default class ObrasController{
             res.redirect('/'+caminhoBase + 'add');
         }
         this.list = async(req, res)=>{
-            const resultado = await Obras.find({}).populate('artistas');
+            const resultado = await Obras.find({}).populate('artista');
             res.render(caminhoBase + 'lst', {Obrass:resultado})
         }
         this.find = async(req, res)=>{

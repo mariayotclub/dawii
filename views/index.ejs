@@ -1,3 +1,40 @@
-<%-include('cabecalho.ejs')%>
-    <h1>Bem-vindo ao Site</h1>
- <%-include('rodape.ejs')%>
+<%- include('cabecalho.ejs') %>
+
+<div class="text-center py-5">
+    <h1 class="display-4 mb-3" style="font-family: 'Georgia', serif;">Painel Administrativo</h1>
+    <p class="lead text-muted mb-5">Gerencie sua galeria com elegância.</p>
+    
+    <div class="row justify-content-center gap-4">
+        <!-- Artistas: Vinho Rosado (Primary) -->
+        <a href="/artista/lst" class="btn btn-outline-primary btn-lg col-md-2 py-4">
+            <div class="mb-2"><i class="fa fa-user fa-2x"></i></div>
+            Artistas
+        </a>
+        
+        <!-- Obras: Cinza Escuro (Success redefinido no CSS) -->
+        <a href="/obras/lst" class="btn btn-outline-success btn-lg col-md-2 py-4">
+            <div class="mb-2"><i class="fa fa-image fa-2x"></i></div>
+            Obras
+        </a>
+        
+        <!-- Exposições: Pêssego (Custom inline usando a nova variável) -->
+        <a href="/exposicao/lst" class="btn btn-lg col-md-2 py-4" 
+           style="color: #9c7b66; border: 1px solid #ebc4a9; background-color: transparent;"
+           onmouseover="this.style.backgroundColor='#ebc4a9'; this.style.color='#3e3742'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#9c7b66'">
+            <div class="mb-2"><i class="fa fa-eye fa-2x"></i></div>
+            Exposições
+        </a>
+        
+        <!-- Eventos: Vermelho Suave (Custom inline usando a nova variável) -->
+        <a href="/evento/lst" class="btn btn-lg col-md-2 py-4" 
+           style="color: #cc8383; border: 1px solid #cc8383; background-color: transparent;"
+           onmouseover="this.style.backgroundColor='#cc8383'; this.style.color='#ffffff'"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#cc8383'">
+            <div class="mb-2"><i class="fa fa-calendar fa-2x"></i></div>
+            Eventos
+        </a>
+    </div>
+</div>
+
+<%- include('rodape.ejs') %>

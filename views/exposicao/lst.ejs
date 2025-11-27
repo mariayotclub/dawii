@@ -1,32 +1,47 @@
-<%-include('../cabecalho.ejs')%>
-    <h1>Exposições</h1>
-    <div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome">
-         <button type="submit">Pesquisar</button>
-    </form>
+<%- include('../cabecalho.ejs') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1><i class="fa fa-eye"></i> Exposições</h1>
+    <a href="/exposicao/add" class="btn btn-success"><i class="fa fa-plus"></i> Nova Exposição</a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="/exposicao/lst" method="post" class="row g-2">
+            <div class="col-auto flex-grow-1">
+                <input type="text" name="filtro" class="form-control" placeholder="Pesquisar por nome...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>
+            </div>
+        </form>
     </div>
-    <a href="/exposicao/add" class="btn" >Adicionar Exposicao</a>
-    <table>
-        <tr>
-            <td>Nome da exposição individual</td>
-            <td>Tema</td>
-            <td>Artista</td>
-            <td>Ações</td>
-        
-        </tr>
-      
-        <%for (const {id, nomeColecao, tema, artista} of Exposicoes) {%>
-        <tr>
-            <td><%=nomeColecao%></td>
-            <td><%=tema%></td>
-             <td><%=artista%></td>
-            
-            <td><a href="/exposicao/edt/<%=id%>" class="btn" >Editar</a>
-            <a href="/exposicao/del/<%=id%>" class="btn" >Excluir</a></td>
-        </tr>
-        <%}%>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome da Exposição</th>
+                <th>Tema</th>
+                <th>Artista</th>
+                <th class="text-center" style="width: 150px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const {id, nomeColecao, tema, artista} of Exposicoes) { %>
+            <tr>
+                <td><%= nomeColecao %></td>
+                <td><%= tema %></td>
+                <td><%= artista %></td>
+                <td class="text-center">
+                    <a href="/exposicao/edt/<%= id %>" class="btn btn-sm btn-warning" title="Editar"><i class="fa fa-edit"></i></a>
+                    <a href="/exposicao/del/<%= id %>" class="btn btn-sm btn-danger" title="Excluir" onclick="return confirm('Tem certeza?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
     </table>
- <%-include('../rodape.ejs')%>
+</div>
+
+<%- include('../rodape.ejs') %>

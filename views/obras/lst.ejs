@@ -1,43 +1,57 @@
-<%-include('../cabecalho.ejs')%>
-    <h1>Obras</h1>
-    <div>
-        <form action="
-        " method="post">
-            <input type="text" name="filtro" id="" placeholder="digite o nome">
-            <button type="submit">Pesquisar</button>
+<%- include('../cabecalho.ejs') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1><i class="fa fa-image"></i> Obras</h1>
+    <a href="/obras/add" class="btn btn-success"><i class="fa fa-plus"></i> Nova Obra</a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="/obras/lst" method="post" class="row g-2">
+            <div class="col-auto flex-grow-1">
+                <input type="text" name="filtro" class="form-control" placeholder="Pesquisar por nome da obra...">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>
+            </div>
         </form>
     </div>
-    <a href="/obras/add" class="btn">Adicionar Obra</a>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Artista</td>
-            <td>tipo</td>
-            <td>Descrição</td>
-            <td>Obra</td>
-            <td>Ações</td>
-        </tr>
+</div>
 
-        <%for (const {id, nomeColecao, artista, tipo, descricao, imagem} of Obrass) {%>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
             <tr>
-                <td>
-                    <%=nomeColecao%>
+                <th>Nome da Obra</th>
+                <th>Artista</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th class="text-center">Imagem</th>
+                <th class="text-center" style="width: 150px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const {id, nomeColecao, artista, tipo, descricao, imagem} of Obrass) { %>
+            <tr>
+                <td><%= nomeColecao %></td>
+                <td><%= artista ? artista.nome : 'N/A' %></td> <!-- Ajuste de segurança caso artista seja null -->
+                <td><%= tipo %></td>
+                <td><%= descricao %></td>
+                <td class="text-center">
+                    <% if (imagem) { %>
+                        <img src="<%= imagem %>" class="img-thumbnail" style="max-height: 80px; max-width: 100px;">
+                    <% } else { %>
+                        <span class="text-muted">Sem imagem</span>
+                    <% } %>
                 </td>
-                <td>
-                    <%=artista%>
-                </td>
-                <td>
-                    <%=tipo%>
-                </td>
-                <td>
-                    <%=descricao%>
-                </td>
-                <td><img src="<%=imagem%>" width="150" height="150"></td>
-
-                <td><a href="/obras/edt/<%=id%>" class="btn">Editar</a>
-                    <a href="/obras/del/<%=id%>" class="btn">Excluir</a>
+                <td class="text-center">
+                    <a href="/obras/edt/<%= id %>" class="btn btn-sm btn-warning" title="Editar"><i class="fa fa-edit"></i></a>
+                    <a href="/obras/del/<%= id %>" class="btn btn-sm btn-danger" title="Excluir" onclick="return confirm('Tem certeza?')"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
-            <%}%>
+            <% } %>
+        </tbody>
     </table>
-    <%-include('../rodape.ejs')%>
+</div>
+
+<%- include('../rodape.ejs') %>
