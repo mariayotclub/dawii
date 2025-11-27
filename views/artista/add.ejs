@@ -1,0 +1,42 @@
+<%- include('../cabecalho.ejs') %>
+
+<h1>Adicionar Artista</h1>
+
+<div>
+    <a href="/artista/lst" class="btn">Listar</a>
+</div>
+
+<div>
+    <form method="post">
+
+        <div class="form-group">
+            <label>Nome:</label>
+            <input type="text" name="nome"><br>
+        </div>
+
+        <div class="form-group">
+            <label>Data de nascimento:</label>
+            <input type="date" name="dataNascimento"><br>
+        </div>
+
+        <div class="form-group">
+            <label>CPF:</label>
+            <input type="number" name="CPF"><br>
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="text" name="email"><br>
+        </div>
+
+        <div class="form-group">
+            <label>Celular:</label>
+            <input type="number" name="celular"><br>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+        
+    </form>
+</div>
+
+<%- include('../rodape.ejs') %>

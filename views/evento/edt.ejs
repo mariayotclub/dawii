@@ -1,0 +1,34 @@
+<%- include('../cabecalho.ejs') %>
+
+<h1>Editar Evento</h1>
+
+<div>
+    <a href="/evento/lst" class="btn">Listar</a>
+</div>
+
+<div>
+    <form method="post">
+       
+        <input type="hidden" name="id" value="<%= Evento.id %>">
+
+        <div class="form-group">
+            <label>Nome do Evento:</label>
+            <input type="text" name="nomeEvento" value="<%= Evento.nomeEvento %>"><br>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo:</label>
+            <input type="text" name="tipo" value="<%= Evento.tipo %>"><br>
+        </div>
+
+        <div class="form-group">
+            <label>Data:</label>
+           <input type="date" name="data" value="<%= Evento.data %>"><br>
+        </div>
+
+        <button type="submit">Atualizar</button>
+        
+    </form>
+</div>
+
+<%- include('../rodape.ejs') %>

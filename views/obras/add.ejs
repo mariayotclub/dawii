@@ -1,0 +1,50 @@
+<%- include('../cabecalho.ejs') %>
+
+    <h1>Adicionar Artista</h1>
+
+    <div>
+        <a href="/obras/lst" class="btn">Listar</a>
+    </div>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Obra:</label>
+                <input type="text" name="nomeColecao"><br>
+            </div>
+
+            <div class="form-group">
+                <label>Artista:</label>
+                <select name="artista" id="">
+                    <option value="">selecione</option>
+                    <%Artistas.forEach(function(artista){%>
+                        <option value='<%=artista._id%>'>
+                            <%=artista.nome%>
+                        </option>
+                        <%})%>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Tipo:</label>
+                <input type="text" name="tipo"><br>
+            </div>
+
+            <div class="form-group">
+                <label>Descrição:</label>
+                <input type="text" name="descricao"><br>
+            </div>
+
+            <div class="form-group">
+                <label>Upload da Obra:</label>
+                <input type="file" name="imagem"><br>
+            </div>
+
+
+            <button type="submit" class="btn">Cadastrar</button>
+
+        </form>
+    </div>
+
+    <%- include('../rodape.ejs') %>

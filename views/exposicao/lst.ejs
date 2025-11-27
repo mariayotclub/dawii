@@ -1,0 +1,32 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Exposições</h1>
+    <div>
+        <form action="
+        " method="post">
+        <input type="text" name="filtro"
+         id="" placeholder="digite o nome">
+         <button type="submit">Pesquisar</button>
+    </form>
+    </div>
+    <a href="/exposicao/add" class="btn" >Adicionar Exposicao</a>
+    <table>
+        <tr>
+            <td>Nome da exposição individual</td>
+            <td>Tema</td>
+            <td>Artista</td>
+            <td>Ações</td>
+        
+        </tr>
+      
+        <%for (const {id, nomeColecao, tema, artista} of Exposicoes) {%>
+        <tr>
+            <td><%=nomeColecao%></td>
+            <td><%=tema%></td>
+             <td><%=artista%></td>
+            
+            <td><a href="/exposicao/edt/<%=id%>" class="btn" >Editar</a>
+            <a href="/exposicao/del/<%=id%>" class="btn" >Excluir</a></td>
+        </tr>
+        <%}%>
+    </table>
+ <%-include('../rodape.ejs')%>

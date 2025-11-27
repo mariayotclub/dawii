@@ -1,0 +1,32 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Eventos Marcados</h1>
+    <div>
+        <form action="
+        " method="post">
+        <input type="text" name="filtro"
+         id="" placeholder="digite o nome">
+         <button type="submit">Pesquisar</button>
+    </form>
+    </div>
+    <a href="/evento/add" class="btn" >Adicionar Evento</a>
+    <table>
+        <tr>
+            <td>Evento</td>
+            <td>Tipo</td>
+            <td>Data</td>
+            <td>Ações</td>
+        
+        </tr>
+      
+        <%for (const {id, nomeEvento, tipo, data} of Eventos) {%>
+        <tr>
+            <td><%=nomeEvento%></td>
+            <td><%=tipo%></td>
+             <td><%=data%></td>
+            
+            <td><a href="/evento/edt/<%=id%>" class="btn" >Editar</a>
+            <a href="/evento/del/<%=id%>" class="btn" >Excluir</a></td>
+        </tr>
+        <%}%>
+    </table>
+ <%-include('../rodape.ejs')%>

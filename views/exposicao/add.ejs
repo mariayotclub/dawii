@@ -1,0 +1,39 @@
+<%- include('../cabecalho.ejs') %>
+
+    <h1>Adicionar Exposição</h1>
+
+    <div>
+        <a href="/exposicao/lst" class="btn">Listar</a>
+    </div>
+
+    <div>
+        <form method="post">
+
+            <div class="form-group">
+                <label>Nome Coleção:</label>
+                <input type="text" name="nomeColecao"><br>
+            </div>
+
+            <div class="form-group">
+                <label>Artista:</label>
+                <select name="artista" id="">
+                    <option value="">selecione</option>
+                    <%Artistas.forEach(function(artista){%>
+                        <option value='<%=artista.id%>'>
+                            <%=artista.nome%>
+                        </option>
+                        <%})%>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Tema:</label>
+                <input type="text" name="tema"><br>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
+    </div>
+
+    <%- include('../rodape.ejs') %>
