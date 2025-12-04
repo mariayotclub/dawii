@@ -16,12 +16,17 @@
 
         <div class="col-md-6">
             <label class="form-label">Tipo:</label>
-            <input type="text" name="tipo" value="<%= Evento.tipo %>" class="form-control" required>
+            <select name="tipo" class="form-select" required>
+                <option value="">Selecione...</option>
+                <option value="Workshop" <%= Evento.tipo === 'Workshop' ? 'selected' : '' %>>Workshop</option>
+                <option value="Exposição" <%= Evento.tipo === 'Exposição' ? 'selected' : '' %>>Exposição</option>
+                <option value="Palestra" <%= Evento.tipo === 'Palestra' ? 'selected' : '' %>>Palestra</option>
+                <option value="Outro" <%= Evento.tipo === 'Outro' ? 'selected' : '' %>>Outro</option>
+            </select>
         </div>
 
         <div class="col-md-6">
             <label class="form-label">Data:</label>
-            <!-- Formatar a data para o input date (YYYY-MM-DD) é importante aqui se 'Evento.data' vier completo -->
             <input type="date" name="data" value="<%= new Date(Evento.data).toISOString().split('T')[0] %>" class="form-control" required>
         </div>
 
