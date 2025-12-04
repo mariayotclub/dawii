@@ -1,0 +1,40 @@
+<%- include('cabecalho.ejs') %>
+
+<div class="container py-5">
+    <div class="d-flex align-items-center mb-5">
+        <h1 class="me-auto" style="font-family: 'Georgia', serif; color: var(--color-dark);">
+            <i class="fa fa-calendar-check me-2"></i>Próximos Eventos
+        </h1>
+        <a href="/site" class="btn btn-outline-secondary"><i class="fa fa-arrow-left"></i> Voltar</a>
+    </div>
+
+    <% if (Eventos.length === 0) { %>
+        <div class="alert alert-warning text-center">Nenhum evento agendado.</div>
+    <% } else { %>
+        <div class="list-group shadow-sm">
+            <% for (const evento of Eventos) { %>
+                <div class="list-group-item list-group-item-action p-4 border-start-0 border-end-0">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center mb-3 mb-md-0">
+                            <div class="date-badge d-flex flex-column justify-content-center p-2">
+                                <span class="h2 m-0"><%= new Date(evento.data).getDate() %></span>
+                                <span class="text-uppercase small"><%= new Date(evento.data).toLocaleDateString('pt-BR', { month: 'short' }) %></span>
+                                <span class="small"><%= new Date(evento.data).getFullYear() %></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="h4 mb-1" style="color: var(--color-dark);"><%= evento.nomeEvento %></h3>
+                            <span class="badge bg-secondary mb-2"><%= evento.tipo %></span>
+                            <p class="mb-0 text-muted">Participe deste momento especial em nossa galeria.</p>
+                        </div>
+                        <div class="col-md-2 text-center mt-3 mt-md-0">
+                            <button class="btn btn-outline-primary rounded-pill btn-sm">Saiba Mais</button>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../rodape.ejs') %>

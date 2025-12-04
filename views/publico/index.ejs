@@ -1,0 +1,40 @@
+<%- include('cabecalho.ejs') %>
+
+<div class="public-hero">
+    <h1 class="display-3" style="font-family: 'Georgia', serif; color: var(--color-primary);">Bem-vindo à Galeria</h1>
+    <p class="lead text-muted">Explore obras fascinantes e participe de nossos eventos culturais.</p>
+</div>
+
+<div class="container py-4">
+    <div class="row justify-content-center align-items-stretch g-4">
+        
+        <div class="col-md-5">
+            <div class="card text-center h-100 p-5 shadow-sm" style="border-color: var(--color-primary);">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <div class="mb-4 text-primary">
+                        <i class="fa fa-images fa-4x" style="color: var(--color-primary);"></i>
+                    </div>
+                    <h2 class="card-title">Galeria de Obras</h2>
+                    <p class="card-text text-muted mb-4">Conheça nosso acervo completo e descubra novos artistas.</p>
+                    <a href="/site/galeria" class="btn btn-primary btn-lg px-5 rounded-pill">Ver Galeria</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card text-center h-100 p-5 shadow-sm" style="border-color: var(--color-accent);">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <div class="mb-4">
+                        <i class="fa fa-calendar-alt fa-4x" style="color: var(--color-accent);"></i>
+                    </div>
+                    <h2 class="card-title">Agenda Cultural</h2>
+                    <p class="card-text text-muted mb-4">Workshops, exposições e palestras. Veja o que está por vir.</p>
+                    <a href="/site/eventos" class="btn btn-danger btn-lg px-5 rounded-pill" style="background-color: var(--color-accent); border: none;">Ver Eventos</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include('../rodape.ejs') %>

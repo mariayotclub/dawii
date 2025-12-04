@@ -6,6 +6,7 @@ import CelularRoutes from './routes/ExposicaoRoutes.js'; // rotas externas
 import ArtistaRoutes from './routes/ArtistaRoutes.js'; // rotas externas
 import ObrasRoutes from './routes/ObrasRoutes.js';
 import EventoRoutes from './routes/EventoRoutes.js';
+import PublicoRoutes from './routes/PublicoRoutes.js';
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(CelularRoutes)
 app.use(ArtistaRoutes)
 app.use(ObrasRoutes)
 app.use(EventoRoutes)
+app.use(PublicoRoutes)
 app.use(routes)
 app.listen(3001)
 // Exporta o handler compatível com Vercel

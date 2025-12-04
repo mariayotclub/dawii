@@ -1,0 +1,42 @@
+<%- include('cabecalho.ejs') %>
+
+<div class="container py-5">
+    <div class="d-flex align-items-center mb-5">
+        <h1 class="me-auto" style="font-family: 'Georgia', serif; color: var(--color-dark);">
+            <i class="fa fa-camera-retro me-2"></i>Acervo
+        </h1>
+        <a href="/site" class="btn btn-outline-secondary"><i class="fa fa-arrow-left"></i> Voltar</a>
+    </div>
+
+    <% if (Obras.length === 0) { %>
+        <div class="alert alert-info text-center">Nenhuma obra cadastrada no momento.</div>
+    <% } else { %>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <% for (const obra of Obras) { %>
+            <div class="col">
+                <div class="card art-card h-100">
+                    <div class="art-img-container">
+                        <% if (obra.imagem) { %>
+                            <img src="<%= obra.imagem %>" alt="<%= obra.nomeColecao %>">
+                        <% } else { %>
+                            <div class="text-muted"><i class="fa fa-image fa-3x"></i><br>Sem imagem</div>
+                        <% } %>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold" style="color: var(--color-primary);"><%= obra.nomeColecao %></h5>
+                        <p class="card-text text-muted fst-italic">
+                            por <%= obra.artista ? obra.artista.nome : 'Artista Desconhecido' %>
+                        </p>
+                        <span class="badge rounded-pill bg-light text-dark border"><%= obra.tipo %></span>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 text-center pb-3">
+                        <small class="text-muted"><%= obra.descricao %></small>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../rodape.ejs') %>
