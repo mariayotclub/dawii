@@ -2,7 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import routes from './routes/route.js'; // rotas externas
-import CelularRoutes from './routes/ExposicaoRoutes.js'; // rotas externas
+import ExposicaoRoutes from './routes/ExposicaoRoutes.js'; // rotas externas
 import ArtistaRoutes from './routes/ArtistaRoutes.js'; // rotas externas
 import ObrasRoutes from './routes/ObrasRoutes.js';
 import EventoRoutes from './routes/EventoRoutes.js';
@@ -24,7 +24,7 @@ app.use(express.static(join(__dirname, '/public')));
 app.set('views', join(__dirname, '/views'));
 
 // Rotas
-app.use(CelularRoutes)
+app.use(ExposicaoRoutes)
 app.use(ArtistaRoutes)
 app.use(ObrasRoutes)
 app.use(EventoRoutes)
